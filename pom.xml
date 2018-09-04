@@ -131,24 +131,59 @@
               </additionalProperties>
             </configuration>
           </execution>
+          <execution>
+            <id>integration-test</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>start</goal>
+            </goals>
+            <configuration>
+              <jvmArguments>${robot}</jvmArguments>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
+      
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>${jacoco.version}</version>
         <executions>
           <execution>
+            <id>pre-unit-test</id>
             <goals>
               <goal>prepare-agent</goal>
             </goals>
           </execution>
           <execution>
-            <id>report</id>
+            <id>post-unit-test</id>
             <phase>prepare-package</phase>
             <goals>
               <goal>report</goal>
             </goals>
+            <configuration>
+              <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>prepare-agent-integration</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>prepare-agent-integration</goal>
+            </goals>
+            <configuration>
+              <propertyName>robot</propertyName>
+            </configuration>
+          </execution>
+          <execution>
+            <id>post-integration-test</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>report-integration</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -201,6 +236,33 @@
             <version>${webjars-bootstrap.version}</version>
           </dependency>
         </dependencies>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.robotframework</groupId>
+        <artifactId>robotframework-maven-plugin</artifactId>
+        <version>1.4.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>acceptance-test</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <skip>${skipRobotTests}</skip>
+          <extraPathDirectories>
+            <extraPathDirectory>/usr/lib/python3.7/site-packages/</extraPathDirectory>
+          </extraPathDirectories>
+          <testCasesDirectory>${basedir}/src/test/robotframework/tests/</testCasesDirectory>
+          <outputDirectory>${basedir}/target/robotframework/</outputDirectory>
+          <externalRunner>
+            <excludeDependencies>false</excludeDependencies>
+            <jvmArgs>
+              <jvmArg>${robot}</jvmArg>
+            </jvmArgs>
+          </externalRunner>
+        </configuration>
       </plugin>
     </plugins>
   </build>
