@@ -113,33 +113,20 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
         <executions>
           <execution>
-            <!-- Spring Boot Actuator displays build-related information
-              if a META-INF/build-info.properties file is present -->
-            <goals>
-              <goal>build-info</goal>
-            </goals>
+            <id>wait</id>
+            <phase>verify</phase>
             <configuration>
-              <additionalProperties>
-                <encoding.source>${project.build.sourceEncoding}</encoding.source>
-                <encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
-                <java.source>${maven.compiler.source}</java.source>
-                <java.target>${maven.compiler.target}</java.target>
-              </additionalProperties>
+              <target>
+                <sleep seconds="1" />
+              </target>
             </configuration>
-          </execution>
-          <execution>
-            <id>integration-test</id>
-            <phase>integration-test</phase>
             <goals>
-              <goal>start</goal>
+              <goal>run</goal>
             </goals>
-            <configuration>
-              <jvmArguments>${robot}</jvmArguments>
-            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -177,13 +164,50 @@
           </execution>
           <execution>
             <id>post-integration-test</id>
-            <phase>post-integration-test</phase>
+            <phase>verify</phase>
             <goals>
               <goal>report-integration</goal>
             </goals>
             <configuration>
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
             </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <!-- Spring Boot Actuator displays build-related information
+              if a META-INF/build-info.properties file is present -->
+            <goals>
+              <goal>build-info</goal>
+            </goals>
+            <configuration>
+              <additionalProperties>
+                <encoding.source>${project.build.sourceEncoding}</encoding.source>
+                <encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
+                <java.source>${maven.compiler.source}</java.source>
+                <java.target>${maven.compiler.target}</java.target>
+              </additionalProperties>
+            </configuration>
+          </execution>
+          <execution>
+            <id>pre-integration-test</id>
+            <goals>
+              <goal>start</goal>
+            </goals>
+            <configuration>
+              <jvmArguments>${robot}</jvmArguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>post-integration-test</id>
+            <goals>
+              <goal>stop</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
@@ -239,6 +263,15 @@
       </plugin>
       
       <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+        <!-- skips surefire tests without skipping failsafe tests.
+                 Property value seems to magically default to false -->
+          <skipTests>${skip.surefire.tests}</skipTests>
+        </configuration>
+      </plugin>
+      
+      <plugin>
         <groupId>org.robotframework</groupId>
         <artifactId>robotframework-maven-plugin</artifactId>
         <version>1.4.1</version>
@@ -258,9 +291,6 @@
           <outputDirectory>${basedir}/target/robotframework/</outputDirectory>
           <externalRunner>
             <excludeDependencies>false</excludeDependencies>
-            <jvmArgs>
-              <jvmArg>${robot}</jvmArg>
-            </jvmArgs>
           </externalRunner>
         </configuration>
       </plugin>
