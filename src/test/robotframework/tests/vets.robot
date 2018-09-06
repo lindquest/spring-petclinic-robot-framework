@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    ../resources/page_objects/vets.robot
+Test Setup  Go To PetClinic Veterinarians Page
 
 *** Test Cases ***
-Open PetClinic Veterinarians Page
-    Open Browser To PetClinic Veterinarians Page
+Check PetClinic Veterinarians Page
     Veterinarians Page Should Contain Vets Table

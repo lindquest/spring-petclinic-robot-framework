@@ -1,6 +1,7 @@
 *** Settings ***
 Resource    ../resources/page_objects/oups.robot
+Test Setup  Go To PetClinic Error Page
 
 *** Test Cases ***
-Open PetClinic Error Page
-    Open Browser To PetClinic Error Page
+Check PetClinic Error Page
+    Page Should Contain Expected Error

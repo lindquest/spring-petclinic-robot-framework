@@ -8,8 +8,8 @@ ${ERROR_HEADER_TEXT}            Something happened...
 ${ERROR_MESSSAGE}               Expected: controller used to showcase what happens when an exception is thrown
 
 *** Keywords ***
-Open Browser To PetClinic Error Page
-    Open Browser To Page                ${ERROR_URL}
-    Wait Until Element Is Visible       ${ERROR_HEADER}
-    Element Text Should Be              ${ERROR_HEADER}      ${ERROR_HEADER_TEXT}
+Go To PetClinic Error Page
+    Go To Page      ${ERROR_URL}    ${ERROR_HEADER_TEXT}    ${ERROR_HEADER}
+
+Page Should Contain Expected Error
     Page Should Contain                 ${ERROR_MESSSAGE}
