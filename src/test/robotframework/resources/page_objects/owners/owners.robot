@@ -55,3 +55,8 @@ Page Should Contain Only Relevant Names
     @{Last Names}=      Get Visible Last Names
     :FOR    ${Name}     IN  @{Last Names}
     \       Should Be Equal As Strings  ${Query}    ${Name}
+
+Open Random Owner Information
+    @{Owners}=                      Get WebElements         ${OWNERS_TABLE_OWNER_NAME}
+    ${Owner}=                       Pick Random Element     ${Owners}
+    Click Element                   ${Owner}
