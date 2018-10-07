@@ -5,6 +5,7 @@ target/*
 .idea
 *.iml
 *.pyc
+*.class
 /target
 .sts4-cache/
 .vscode/*
