@@ -274,7 +274,7 @@
       <plugin>
         <groupId>org.robotframework</groupId>
         <artifactId>robotframework-maven-plugin</artifactId>
-        <version>1.4.1</version>
+        <version>1.4.7</version>
         <executions>
           <execution>
             <goals>
@@ -285,7 +285,8 @@
         <configuration>
           <skip>${skipRobotTests}</skip>
           <extraPathDirectories>
-            <extraPathDirectory>/usr/lib/python3.7/site-packages/</extraPathDirectory>
+            <extraPathDirectory>/usr/lib/python*/site-packages/</extraPathDirectory>
+            <extraPathDirectory>/Library/Python/*/site-packages/</extraPathDirectory>
           </extraPathDirectories>
           <testCasesDirectory>${basedir}/src/test/robotframework/tests/</testCasesDirectory>
           <outputDirectory>${basedir}/target/robotframework/</outputDirectory>
