@@ -8,7 +8,7 @@ ${OWNER_INFO_TABLE}                 //table[@class="table table-striped"][1]
 ${OWNER_INFO_TABLE_HEADER}          ${OWNER_INFO_TABLE}//th[text()="[HEADER]"]
 ${OWNER_INFO_TABLE_HEADER_ROW}      ${OWNER_INFO_TABLE_HEADER}/../td
 @{OWNER_INFO_TABLE_HEADERS}         Name    Address     City    Telephone
-${EDIT_OWNER_BUTTON}                //a[text()="Edit\n${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}Owner"]
+${EDIT_OWNER_BUTTON}                //a[contains(text(), "Edit") and contains(text(), "Owner")]
 
 *** Keywords ***
 Page Should Contain Owner Information Section
