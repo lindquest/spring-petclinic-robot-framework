@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../resources/page_objects/vets.robot
+Resource    ../../resources/page_objects/vets.robot
 Test Setup  Go To PetClinic Veterinarians Page
 
 *** Test Cases ***

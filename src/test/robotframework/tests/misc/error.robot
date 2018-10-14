@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../resources/page_objects/oups.robot
+Resource    ../../resources/page_objects/oups.robot
 Test Setup  Go To PetClinic Error Page
 
 *** Test Cases ***

@@ -1,8 +1,8 @@
 *** Settings ***
-Resource        ../resources/page_objects/owners/find.robot
-Resource        ../resources/page_objects/owners/owners.robot
-Resource        ../resources/page_objects/owners/owner/owner.robot
-Resource        ../resources/page_objects/owners/owner/edit.robot
+Resource        ../../resources/page_objects/owners/find.robot
+Resource        ../../resources/page_objects/owners/owners.robot
+Resource        ../../resources/page_objects/owners/owner/owner.robot
+Resource        ../../resources/page_objects/owners/owner/edit.robot
 Test Setup      Go To Random Owner Edit Page
 
 *** Keywords ***

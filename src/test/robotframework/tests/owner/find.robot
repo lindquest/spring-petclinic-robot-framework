@@ -1,7 +1,7 @@
 *** Settings ***
-Resource        ../resources/page_objects/owners/find.robot
-Resource        ../resources/page_objects/owners/owners.robot
-Resource        ../resources/page_objects/owners/owner/owner.robot
+Resource        ../../resources/page_objects/owners/find.robot
+Resource        ../../resources/page_objects/owners/owners.robot
+Resource        ../../resources/page_objects/owners/owner/owner.robot
 Test Setup      Go To PetClinic Find Owners Page
 
 *** Test Cases ***
