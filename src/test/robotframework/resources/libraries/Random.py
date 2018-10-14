@@ -3,10 +3,11 @@ from random import choice
 class Random:
     def pick_random_element(self, l, unique=True):
         if unique:
-            l = set(l)
+            all_once = set(l)
+            l = list(all_once - set(self._non_uniques(l)))
         else:
             l = self._non_uniques(l)
-        return choice(list(l))
+        return choice(l)
 
     def _non_uniques(self, l):
         non_uniques = []

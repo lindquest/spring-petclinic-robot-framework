@@ -9,7 +9,7 @@ Test Setup      Go To Random Owner And Edit A Random Pet
 *** Keywords ***
 Go To Random Owner And Edit A Random Pet
     Go To PetClinic Find Owners Page
-    Wait Until Keyword Succeeds         Pick Owner With A Pet
+    Wait Until Keyword Succeeds         1 min    1 sec  Pick Owner With A Pet
     Click On A Random Pet Edit Button
 
 Pick Owner With A Pet
