@@ -7,6 +7,7 @@ Resource                            ../../../../common/selenium.robot
 ${PETS_HEADER_TEXT}         Pets and Visits
 ${PETS_TABLE}               //h2[text()="${PETS_HEADER_TEXT}"]/following::table[contains(@class, "table-striped")]/tbody
 ${PETS_TABLE_ROW}           ${PETS_TABLE}/tr
+${PETS_TABLE_ROW_NAME}      ${PETS_TABLE_ROW}//dd[1]
 ${PETS_TABLE_ROW_EDIT_PET}  ${PETS_TABLE_ROW}//a[contains(text(), "Edit") and contains(text(), "Pet")]
 ${PET_BY_NAME_BIRTH_TYPE}   ${PETS_TABLE_ROW}//dd[text()="[NAME]"]/../dd[text()="[BIRTH]"]/../dd[text()="[TYPE]"]
 
@@ -15,6 +16,14 @@ Owner Should Have Pets
     ${Count}=       Get Element Count   ${PETS_TABLE_ROW}
     Should Be True  ${Count} > 0        Owner has not pets.
 
+Get All Pets' Names
+    @{Pets}=    Get WebElements     ${PETS_TABLE_ROW_NAME}
+    @{Names}=   Create List
+    :FOR    ${Name}  IN  @{Pets}
+    \       ${Name}=        Get Text    ${Name}
+    \       Append To List  ${Names}    ${Name}
+    [Return]    @{Names}
+ 
 Get All Pets' Edit Button
     @{Pets Edit}=   Get WebElements     ${PETS_TABLE_ROW_EDIT_PET}
     [Return]    @{Pets Edit}
@@ -30,3 +39,8 @@ ${Type} Named "${Name}" And Born In "${Date}" Should Be Visible
     ${Named}=                   Replace String          ${Typed}                    [NAME]      ${Name} 
     ${Dated}=                   Replace String          ${Named}                    [BIRTH]     ${Date}
     Element Should Be Visible   ${Dated}
+
+Get Random Pet Name
+    @{Names}=   Get All Pets' Names
+    ${Random}=  Pick Random Element     ${Names}
+    [Return]    ${Random}

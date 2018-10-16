@@ -9,13 +9,13 @@ ${PET_TYPE_DROPDOWN}                type
 ${UPDATE_PET_BUTTON}                //button[text()="Update Pet"]
 
 *** Keywords ***
-Change Pet Name To "${Name}"
+Set Pet Name To "${Name}"
     Input Text  ${PET_NAME_FIELD}   ${Name}
 
-Change Pet Birth Date To "${Date}"
+Set Pet Birth Date To "${Date}"
     Input Text  ${PET_BIRTH_DATE_FIELD}     ${Date}
 
-Change Pet Type To A ${Type}
+Set Pet Type To A ${Type}
     ${Type}=                 Convert To Lowercase    ${Type}
     Select From List By Value   ${PET_TYPE_DROPDOWN}    ${Type}
 

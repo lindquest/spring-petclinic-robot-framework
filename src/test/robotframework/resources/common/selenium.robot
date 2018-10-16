@@ -1,5 +1,6 @@
 *** Settings ***
 Library         SeleniumLibrary
+Library         ../libraries/StringExtra.py
 
 *** Variables ***
 ${BROWSER}              Chrome
@@ -25,3 +26,8 @@ Table Should Contain Expected Headers
     [Arguments]     ${Locator}  ${Headers}
     :FOR    ${Element}  IN  @{Headers}
     \       Table Header Should Contain     ${Locator}   ${Element}
+
+${ID} Content Should Be Invalid
+    ${Locator}=         Convert To Camel Case    ${ID}
+    ${Valid}=           Execute Javascript  return window.document.getElementById('${Locator}').checkValidity();
+    Should Not Be True	${Valid}

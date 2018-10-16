@@ -9,6 +9,7 @@ ${OWNER_INFO_TABLE_HEADER}          ${OWNER_INFO_TABLE}//th[text()="[HEADER]"]
 ${OWNER_INFO_TABLE_HEADER_ROW}      ${OWNER_INFO_TABLE_HEADER}/../td
 @{OWNER_INFO_TABLE_HEADERS}         Name    Address     City    Telephone
 ${EDIT_OWNER_BUTTON}                //a[contains(text(), "Edit") and contains(text(), "Owner")]
+${ADD_NEW_PET_BUTTON}               //a[contains(text(), "Add") and contains(text(), "New Pet")]
 
 *** Keywords ***
 Page Should Contain Owner Information Section
@@ -31,6 +32,12 @@ Click On Edit Owner
     ${ID}=                  Get Owner's Unique ID
     Click Element           ${EDIT_OWNER_BUTTON}
     ${URL}=                 Replace String          ${EDIT_OWNER_URL}   [ID]    ${ID}
+    Location Should Be      ${URL}
+
+Click On Add New Pet
+    ${ID}=                  Get Owner's Unique ID
+    Click Element           ${ADD_NEW_PET_BUTTON}
+    ${URL}=                 Replace String          ${NEW_PET_URL}   [ID]    ${ID}
     Location Should Be      ${URL}
 
 Owner's ${Attribute} Should Be "${Value}"
