@@ -8,7 +8,6 @@ ${ADD_PET_BUTTON}                   //button[text()="Add Pet"]
 ${ERROR_INDICATOR}                  //span[contains(@class, "glyphicon-remove")]
 ${HELP_INLINE}                      //input[@id="[ID]"]/../../span[@class="help-inline"]
 
-
 *** Keywords ***
 Click On Add Pet Button
     Click Element   ${ADD_PET_BUTTON}
