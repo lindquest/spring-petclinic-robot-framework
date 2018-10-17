@@ -24,3 +24,18 @@ Add A Visit
     Set Visit Description To "Tooth removal"
     Click On Add Visit Button
     Pet Named "${Pet Name}" Should Have A Visit On 2018-10-15 For "Tooth removal"
+
+Add Visit With Missing Description
+    Click On A Random Pet Add Visit Button
+    ${Pet Name}=                                Get Pet Name
+    Click On Add Visit Button
+    Description Error Message Should Contain "must not be empty"
+
+Add Visit With Empty Date
+    [Documentation]     Original spring-petclinic allows empty date
+    Click On A Random Pet Add Visit Button
+    ${Pet Name}=                                Get Pet Name
+    Set Visit Date To ""
+    Set Visit Description To "Vaccination"
+    Click On Add Visit Button
+    Date Error Message Should Contain "must not be null"
