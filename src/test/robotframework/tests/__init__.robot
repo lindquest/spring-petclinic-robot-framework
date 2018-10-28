@@ -1,5 +1,4 @@
 *** Settings ***
 Resource            ../resources/common/selenium.robot
-Resource            ../resources/page_objects/home.robot
-Suite Setup         Open Browser To PetClinic Welcome Page
+Suite Setup         Open Browser To Page                    ${ADDRESS}/
 Suite Teardown      Close All Browsers
