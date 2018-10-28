@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework.samples</groupId>
   <artifactId>spring-petclinic</artifactId>
-  <version>2.1.0.BUILD-SNAPSHOT</version>
+  <version>2.1.0-3fe9889</version>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -291,7 +291,7 @@
         <executions>
           <execution>
             <goals>
-              <goal>acceptance-test</goal>
+              <goal>run</goal>
             </goals>
           </execution>
         </executions>
@@ -306,6 +306,9 @@
           <externalRunner>
             <excludeDependencies>false</excludeDependencies>
           </externalRunner>
+          <nonCriticalTags>
+            <nonCriticalTag>bugs</nonCriticalTag>
+          </nonCriticalTags>
         </configuration>
       </plugin>
     </plugins>
