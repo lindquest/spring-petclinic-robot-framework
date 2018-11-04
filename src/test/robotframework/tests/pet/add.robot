@@ -14,7 +14,6 @@ Add New Pet
 
 Add Pet With No Name
     [Documentation]     https://github.com/spring-projects/spring-boot/issues/14882
-    [Tags]              bugs
     Add New Pet
     ...     ${EMPTY}
     ...     2017-10-10
@@ -24,7 +23,6 @@ Add Pet With No Name
 
 Add Pet With Missing Birth Date
     [Documentation]     https://github.com/spring-projects/spring-boot/issues/14882
-    [Tags]              bugs
     Add New Pet
     ...     Andy
     ...     ${EMPTY}
@@ -48,7 +46,6 @@ Add Pet With Invalid Birth Date
 
 Add Duplicated Pet
     [Documentation]     https://github.com/spring-projects/spring-boot/issues/14882
-    [Tags]              bugs
     [Setup]     Add New Owner Named "Edward Random" And Add New Dog Named "Kindle"
     Click On Add New Pet
     Set Pet Name To "Kindle"
