@@ -2,6 +2,7 @@
 Library                             String
 Resource                            ../../../common/selenium.robot
 Resource                            edit.robot
+Resource                            pets/new.robot
 
 *** Variables ***
 ${OWNER_INFO_TABLE}                 //table[@class="table table-striped"][1]
@@ -43,3 +44,11 @@ Click On Add New Pet
 Owner's ${Attribute} Should Be "${Value}"
     ${Row}=                   Replace String    ${OWNER_INFO_TABLE_HEADER_ROW}  [HEADER]    ${Attribute}
     Element Text Should Be    ${Row}            ${Value}
+
+Owner Information Should Be
+    [Arguments]     ${First Name}   ${Last Name}    ${Address}  ${City}     ${Telephone}
+    Page Should Contain Owner Information Section
+    Owner's Name Should Be "${First Name} ${Last Name}"
+    Owner's Address Should Be "${Address}"
+    Owner's City Should Be "${City}"
+    Owner's Telephone Should Be "${Telephone}"

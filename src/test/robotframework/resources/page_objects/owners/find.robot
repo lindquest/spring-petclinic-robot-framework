@@ -18,8 +18,3 @@ Search By Owner's Last Name
     Element Should Be Visible           ${FIND_OWNERS_LAST_NAME_INPUT}
     Input Text                          ${FIND_OWNERS_LAST_NAME_INPUT}  ${Last Name}
     Click Button                        ${FIND_OWNERS_SUBMIT}
-
-Get ${Non}Unique Last Name
-    ${Last Name}=   Run Keyword If      '${Non}' == ''      Get Random Last Name    ${True}
-    ...             ELSE                                    Get Random Last Name    ${False}
-    [Return]    ${Last Name}

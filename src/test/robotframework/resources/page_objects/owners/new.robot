@@ -28,6 +28,21 @@ Set Owner's ${Attribute} To "${Value}"
 Click On Add Owner button
     Click Element           ${ADD_OWNER_BUTTON}
 
+Add A New Owner
+    [Arguments]     ${First Name}   ${Last Name}    ${Address}  ${City}     ${Telephone}
+    Go To PetClinic Add Owner Page
+    Set Owner's First Name To "${First Name}"
+    Set Owner's Last Name To "${Last Name}"
+    Set Owner's Address To "${Address}"
+    Set Owner's City To "${City}"
+    Set Owner's Telephone To "${Telephone}"
+    Click On Add Owner button    
+
+Add A New Owner And Verify
+    [Arguments]     ${First Name}   ${Last Name}    ${Address}  ${City}     ${Telephone}
+    Add A New Owner                 ${First Name}   ${Last Name}    ${Address}  ${City}     ${Telephone}
+    Owner Information Should Be     ${First Name}   ${Last Name}    ${Address}  ${City}     ${Telephone}
+
 Try To Add Owner With Missing Information
     [Arguments]     ${Attribute}
     :FOR    ${Field}    IN  @{ADD_OWNER_FIELDS}

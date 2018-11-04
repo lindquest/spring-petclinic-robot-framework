@@ -1,7 +1,6 @@
 *** Settings ***
 Library                             String
 Library                             Collections
-Library                             ../../libraries/Random.py
 Resource                            ../../common/selenium.robot
 
 *** Variables ***
@@ -29,12 +28,6 @@ Page Should Contain Multiple Results
     URL Should Contain Query        ${Query}
     Results Should Be Visible
 
-Get All Last Names
-    Search By Owner's Last Name     ${EMPTY}
-    @{Last Names}=                  Get Visible Last Names
-    Go Back
-    [Return]    @{Last Names}
-
 Get Visible Last Names
     @{Owners}=                      Get WebElements         ${OWNERS_TABLE_OWNER_NAME}
     @{Last Names}=                  Create List
@@ -44,19 +37,9 @@ Get Visible Last Names
     \       Append To List              ${Last Names}           ${Last}
     [Return]    @{Last Names}
 
-Get Random Last Name
-    [Arguments]         ${Unique}=${False}
-    @{Last Names}=      Get All Last Names
-    ${Random}=          Pick Random Element     ${Last Names}   ${Unique}
-    [Return]            ${Random}
-
 Page Should Contain Only Relevant Names
     [Arguments]     ${Query}
     @{Last Names}=      Get Visible Last Names
     :FOR    ${Name}     IN  @{Last Names}
     \       Should Be Equal As Strings  ${Query}    ${Name}
 
-Open Random Owner Information
-    @{Owners}=                      Get WebElements         ${OWNERS_TABLE_OWNER_NAME}
-    ${Owner}=                       Pick Random Element     ${Owners}
-    Click Element                   ${Owner}

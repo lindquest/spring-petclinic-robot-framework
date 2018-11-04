@@ -4,7 +4,7 @@ Resource        ../../resources/page_objects/owners/find.robot
 Resource        ../../resources/page_objects/owners/owners.robot
 Resource        ../../resources/page_objects/owners/owner/owner.robot
 Resource        ../../resources/page_objects/owners/owner/edit.robot
-Test Setup      Go To Random Owner Edit Page
+Test Setup      Add New Owner Named "John Edit" And Click On Edit Owner
 
 *** Test Cases ***
 Edit Owner Information
