@@ -48,7 +48,7 @@ Add Duplicated Pet
     [Documentation]     https://github.com/spring-projects/spring-boot/issues/14882
     [Setup]     Add New Owner Named "Edward Random" And Add New Dog Named "Kindle"
     Click On Add New Pet
-    Set Pet Name To "Kindle"
+    Set Pet Name To "kindle"
     Set Pet Birth Date To "2017-10-10"
     Set Pet Type To A Lizard
     Click On Add Pet Button
