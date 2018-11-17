@@ -14,7 +14,6 @@ ${ADD_OWNER_BUTTON}         //button[text()="Add Owner"]
 ...                         address=11 Marina Rd.   
 ...                         city=Madison     
 ...                         telephone=1122334455
-${ERROR_INDICATOR}          //span[contains(@class, "glyphicon-remove")]
 ${DEFAULT_ERROR}            must not be empty
 
 *** Keywords ***
